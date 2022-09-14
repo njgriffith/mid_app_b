@@ -1,0 +1,30 @@
+{
+    "result": [{
+        "title": "How to Shoplift",
+        "author": "Nate Griffith",
+        "price": 13.00,
+        "location": "Raleigh",
+        "tax": 0.075
+    },
+    {
+        "title": "How to Shoplift",
+        "author": "Nate Griffith",
+        "price": 13.00,
+        "location": "Durham",
+        "tax": 0.08
+    },
+    {
+        "title": "Cricket 101",
+        "author": "Apurva Gandhi",
+        "price": 23.00,
+        "location": "Durham",
+        "tax": 0.08
+    },
+    {
+        "title": "Cricket 101",
+        "author": "Apurva Gandhi",
+        "price": 23.00,
+        "location": "Raleigh",
+        "tax": 0.08
+    }]
+}
