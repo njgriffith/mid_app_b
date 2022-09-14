@@ -5,10 +5,12 @@ const fs = require('fs');
 
 let read_json_file = (filename) => {
   let file = './data/'+filename;
+ //console.log("in read");
   return fs.readFileSync(file);
 }
 
 let pasreJSONandUpdate = (salesTax) => {
+ // console.log("In update");
   let result = JSON.parse(read_json_file("laptops.json"));
   for (let i = 0; i < result.length; i++) {
     result[i]["price"] = (result[i]["price"] * salesTax).toFixed(2);
