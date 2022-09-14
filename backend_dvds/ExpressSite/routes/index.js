@@ -17,19 +17,17 @@ router.get("/dvds/all", function (req, res, next) {
 router.get("/dvds/all/:location", (req, res, next) => {
   const param = req.params.location;
   console.log(param);
-  if (param.toLowerCase() != "raleigh" || param.toLowerCase() != "durham") {
+  if (param.toLowerCase() != "raleigh" && param.toLowerCase() != "durham") {
     next(createError(400));
-  } else {
-    console.log("got into dvds/all/:location " + param);
-    const result = dvd.getAllByLocation("location", param);
-    if (result) {
+  }
+  console.log("got into dvds/all/:location " + param);
+  const result = dvd.getAllByLocation("location", param);
+  if (result) {
     res.setHeader("content-type", "application/json");
     res.end(JSON.stringify(result));
-    } else {
-      next(createError(404));
-    }
+  } else {
+    next(createError(404));
   }
-  
 });
 
 router.post("/dvds/add", (request, response, next) => {});
