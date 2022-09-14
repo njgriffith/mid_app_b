@@ -1,32 +1,43 @@
-// const request = require("request");
+const request = require("request");
 
-// const base_url = 'http://localhost:8081/';
-// const contacts_url = base_url + 'contacts';
+const base_url = 'http://localhost:3034/';
+const books_url = base_url + 'books/all';
 
-// describe("First Node Test Server", function () {
-//     describe("GET /contacts", () => {
-//         it("returns status code 200",  (done) => {
-//             request.get(base_url, (error, response, body) => {
-//                 expect(response.statusCode).toBe(200);
-//                 done();
-//             });
-//         });
-//         it("contains firstname", (done) => {
-//             request.get(contacts_url, (error, response, body) => {
-//                 expect(body).toBeTruthy();
-//                 expect(body).toContain("firstname");
-//                 done();
-//             });
-//         });
-//     });
-//     // test for wrong path and expect 404
-//     describe("GET /conststacts", () => {
-//         // accessing wrong path
-//         it("returns status code 404",  (done) => {
-//             request.get(base_url + "conststacts", (error, response, body) => {
-//                 expect(response.statusCode).toBe(404);
-//                 done();
-//             });
-//         });
-//     });
-// });
+describe("First Node Test Server", function () {
+    describe("GET /books/all", () => {
+        it("returns status code 200",  (done) => {
+            request.get(books_url, (error, response, body) => {
+                expect(response.statusCode).toBe(200);
+                done();
+            });
+        });
+        it("contains title", (done) => {
+            request.get(books_url, (error, response, body) => {
+                expect(body).toBeTruthy();
+                expect(body).toContain("Title");
+                done();
+            });
+        });
+    });
+    // test for wrong path and expect 404
+    describe("GET /booooooks", () => {
+        // accessing wrong path
+        it("returns status code 404",  (done) => {
+            request.get(base_url + "booooooks", (error, response, body) => {
+                expect(response.statusCode).toBe(404);
+                done();
+            });
+        });
+    });
+
+    // describe("GET /team", () => {
+    //     it("contains member names", (done) => {
+    //         request.get(base_url + "books/team", (error, response, body) => {
+    //             expect(body).toBeTruthy();
+    //             expect(body).toContain("Apurva Gandhi");
+    //             expect(body).toContain("Nate Griffith");
+    //             done();
+    //         });
+    //     });
+    // });
+});
