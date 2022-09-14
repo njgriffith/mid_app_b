@@ -16,6 +16,9 @@ router.get("/dvds/all", function (req, res, next) {
 
 router.get("/dvds/all/:location", (req, res, next) => {
   const param = req.params.location;
+  if (param.toLowerCase() != "raleigh" || param.toLowerCase() != "durham") {
+    next(createError(400));
+  }
   console.log("got into dvds/all/:location " + param);
   const result = dvd.getAllByLocation("location", param);
   if (result) {
