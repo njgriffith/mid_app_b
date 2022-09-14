@@ -5,25 +5,27 @@ let read_movies_file = () => {
   return fs.readFileSync(file);
 };
 
+exports.addMovie = (movie) => {
+  let movie_list = JSON.parse(read_movies_file());
+  movie_list.push(movie);
+  let result = write_to_database(movie_list);
+  return result;
+};
+
 let write_to_database = (data) => {
     let file = "./data/movies.json";
     fs.writeFileSync(file, JSON.stringify(data));
     return 'Data Written';
 }
+
 exports.list = function () {
   return JSON.parse(read_movies_file());
 };
+
 exports.getAllMovies = () => {
   let result = JSON.parse(read_movies_file());
   // all addresses are stored in a "result" object
   return result;
-};
-
-exports.addMovie = (movie) => {
-    let movie_list = JSON.parse(read_movies_file());
-    movie_list.push(movie);
-    let result = write_to_database(movie_list);
-    return result;
 };
 
 exports.getAllByLocation = (arg, value) => {
@@ -37,8 +39,6 @@ exports.getAllByLocation = (arg, value) => {
             taxRate = 0.08;
             break;
     }
-
-    
 
     for (let i = 0; i<result.length; i++) {
        let dvd = result[i];
