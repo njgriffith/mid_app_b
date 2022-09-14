@@ -1,6 +1,7 @@
 const request = require("request");
 
-const base_url = 'http://localhost:3035/laptops/';
+const base_url = 'http://localhost:3036/laptops/';
+const fs = require('fs');
 
 describe("Laptop service test", function () {
     describe("POST /laptops/add", () => {
@@ -10,17 +11,25 @@ describe("Laptop service test", function () {
                 done();
             });
         });// BELOW TESTS THE ADD BUT COMMENTED OUT SO WE DONT REPEATLY ADD STUFF TO FILE SINCE WE DONT DELETE AFTER
-        // it("returns 200 since body has json object",  (done) => {
-        //     let data = '{ "product": "PhongPad", "brand": "Phong International", "CPU": "core i27", "memory": "69GB", "price": 420.69 }';
-        //     request.post({ headers: { 'content-type': 'application/json' }, url: base_url + "add",body: data}, (error, response) => {
-        //         expect(response.statusCode).toBe(200);
-        //         done();
-        //     });
-        //     request.get(base_url + "all/Raleigh", (error, response, body) => {
-        //         expect(body).toBeTruthy();
-        //         expect(body).toContain("PhongPad");
-        //     });
-        // });
+        it("returns 200 since body has json object",  (done) => {
+            let data = '{ "product": "PhongPad", "brand": "Phong International", "CPU": "core i27", "memory": "69GB", "price": 420.69 }';
+            request.post({ headers: { 'content-type': 'application/json' }, url: base_url + "add",body: data}, (error, response) => {
+                expect(response.statusCode).toBe(200);
+            });
+            request.get(base_url + "all/Raleigh", (error, response, body) => {
+                expect(body).toBeTruthy();
+                expect(body).toContain("PhongPad");
+            });
+            fs.readFile('./data/laptops.json', (err, data) => {
+                let json = JSON.parse(data)
+                json = json.filter(t => t.product !== "PhongPad")
+                //console.log(json)
+                setTimeout(() => {
+                  fs.writeFile('./data/laptops.json', JSON.stringify(json), (err) => { /* console.log(err) */ })    
+                }, 2000)
+              })
+            done();
+        });
     });
     describe("GET /laptops/team", () => {
         it("returns 200",  (done) => {
