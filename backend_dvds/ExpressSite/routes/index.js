@@ -30,8 +30,6 @@ router.get("/dvds/all/:location", (req, res, next) => {
   }
 });
 
-router.post("/dvds/add", (request, response, next) => {});
-
 router.get("/dvds/team", (req, res, next) => {
   const result = team.getTeam();
   if (result) {
@@ -41,5 +39,14 @@ router.get("/dvds/team", (req, res, next) => {
     next(createError(404));
   }
 });
+
+router.post("/dvds/add", (req, res, next) => {
+  const body = req.body;
+  console.log("***********" + req.body);
+  if(body.title == undefined) {
+    res.status(400).send();
+  }
+  console.log(body);
+})
 
 module.exports = router;
