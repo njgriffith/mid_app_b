@@ -11,7 +11,7 @@ exports.list = () => {
 
 exports.getAllByLocation = (arg, value) => {
     let taxRate;
-    let result = JSON.parse(file());
+    let result = JSON.parse(read_json_file());
     switch(value.toLowerCase()) {
         case "raleigh":
             taxRate = 0.075;
