@@ -49,7 +49,7 @@ router.post("/dvds/add", (req, res, next) => {
   
   console.log(body);
   const result = dvd.addMovie(body);
-  
+  res.end(result);
 })
 
 module.exports = router;
