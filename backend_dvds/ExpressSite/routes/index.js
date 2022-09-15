@@ -46,7 +46,10 @@ router.post("/dvds/add", (req, res, next) => {
   if(body.title == undefined) {
     res.status(400).send();
   }
+  
   console.log(body);
+  const result = dvd.addMovie(body);
+  
 })
 
 module.exports = router;
