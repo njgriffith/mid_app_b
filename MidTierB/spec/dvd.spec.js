@@ -77,13 +77,4 @@ describe("Testing DVD API", function () {
             });
         });
     });
-
-    // describe("POST /dvds/add", () => {
-    //     it("returns 400 since body has no json object",  (done) => {
-    //         request.post(base_url + "dvds/add", (error, response, body) => {
-    //             expect(response.statusCode).toBe(400);
-    //             done();
-    //         });
-    //     });
-    // });
 });
