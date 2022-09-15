@@ -33,44 +33,16 @@ router.get("/books/all/:location", (req, res, next) => {
   }
 });
 
-// router.post("/dvds/add", (request, response, next) => {});
 
-// router.get("/dvds/team", (req, res, next) => {
-//   const result = team.getTeam();
-//   if (result) {
-//     res.setHeader("content-type", "application/json");
-//     res.end(JSON.stringify(result));
-//   } else {
-//     next(createError(404));
-//   }
-// });
-
-
-// var express = require('express');
-// var router = express.Router();
-
-// const createError = require('http-errors');
-// const books = require('../modules/books');
-// const members = require('../modules/members');
-// const url = require('url');
-
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Books' });
-// });
-
-
-
-
-router.get('/books/team', (request, response, next) => {
-  let get_params = url.parse(request.url, true).query;
-  console.log('got into teams');
-
-  if (Object.keys(get_params).length == 0) {
-    console.log('no params');
-    response.setHeader('content-type', 'application/json');
-    response.end(JSON.stringify(members.list()));
+router.get("/books/team", (req, res, next) => {
+  const result = team.list();
+  if (result) {
+    res.setHeader("content-type", "application/json");
+    res.end(JSON.stringify(result));
   } 
+  else {
+    next(createError(404));
+  }
 });
 
  module.exports = router;
