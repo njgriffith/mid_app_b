@@ -1,0 +1,22 @@
+{
+  "name": "mid_app_b",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njgriffith/mid_app_b.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/njgriffith/mid_app_b/issues"
+  },
+  "homepage": "https://github.com/njgriffith/mid_app_b#readme",
+  "dependencies": {
+    "child_process": "^1.0.2"
+  }
+}

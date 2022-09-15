@@ -1,0 +1,5 @@
+const { exec } = require('child_process')
+exec('cd ./MidTierB && npm start')
+exec('cd ./backend_books && npm start')
+exec('cd ./backend_dvds/ExpressSite && npm start')
+exec('cd ./backend_laptops/laptopService && npm start')

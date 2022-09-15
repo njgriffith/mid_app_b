@@ -31,7 +31,8 @@ router.get('/classB/laptops/all/:location', function (request, response, next) {
 router.get('/classB/laptops/team', function(request, response, next) {
   axios.get(`http://localhost:3036/laptops/team`)
     .then(resp => {
-      response.send(resp.data)
+      response.send(resp.data);
+      response.status(200).send();
     })
     .catch(e => {
       response.status(400).send(e.message)
@@ -39,13 +40,23 @@ router.get('/classB/laptops/team', function(request, response, next) {
 });
 
 router.post('/classB/laptops/add', function(request, response, next) {
-  
+  // console.log(response);
+  // if(request === undefined) {
+  //   response.status(400).send();
+  //   return;
+  // }
+  if(request.body === undefined) {
+    response.status(400).send();
+    return;
+  }
   axios.post(`http://localhost:3036/laptops/add`, request.body)
     .then(resp => {
-      response.json(request.body)
+      response.json(request.body);
+      console.log("in here");
     })
     .catch(e => {
-      response.status(500).send(e.message)
+      console.log("in error");
+      response.status(e.status).send(e.message);
     })
 });
 
@@ -93,7 +104,7 @@ router.post('/classB/dvds/add', function(request, response, next) {
       response.json(request.body)
     })
     .catch(e => {
-      response.status(500).send(e.message)
+      response.status(400).send(e.message)
     })
 });
 

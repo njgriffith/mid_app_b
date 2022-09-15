@@ -44,7 +44,9 @@ router.post("/dvds/add", (req, res, next) => {
   const body = req.body;
   console.log("***********" + req.body);
   if(body.title == undefined) {
-    res.status(400).send();
+    next(createError(400));
+    //res.status(400).send();
+    // res.end();
   }
   
   console.log(body);
