@@ -30,14 +30,14 @@ describe("First Node Test Server", function () {
         });
     });
 
-    // describe("GET /team", () => {
-    //     it("contains member names", (done) => {
-    //         request.get(base_url + "books/team", (error, response, body) => {
-    //             expect(body).toBeTruthy();
-    //             expect(body).toContain("Apurva Gandhi");
-    //             expect(body).toContain("Nate Griffith");
-    //             done();
-    //         });
-    //     });
-    // });
+    describe("GET /team", () => {
+        it("contains member names", (done) => {
+            request.get(base_url + "books/team", (error, response, body) => {
+                expect(body).toBeTruthy();
+                expect(body).toContain("Apurva Gandhi");
+                expect(body).toContain("Nate Griffith");
+                done();
+            });
+        });
+    });
 });
